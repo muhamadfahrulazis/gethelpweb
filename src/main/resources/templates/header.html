@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header th:fragment="myHeader" id="header" class="fixed-top d-flex align-items-center header-transparent">
+        <div class="container d-flex align-items-center">
+
+            <div class="logo mr-auto">
+                <h1 class="text-light"><a th:href="@{/}"><span>Get Help</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+<!--                <a href="#"><img th:src="@{/assets/img/logo.png}" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Layanan Kami</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a th:href="@{/registrationForm}">Bergabung</a></li>
+
+                </ul>
+            </nav>
+            <!-- .nav-menu -->
+
+        </div>
+    </header>
+</body>
+</html>

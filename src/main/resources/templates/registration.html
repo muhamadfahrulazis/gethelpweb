@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="assets/css/mdb.min.css" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Bootslander - v2.2.0
+    * Template URL: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+    <title>Get Help Indonesia</title>
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<div th:replace="header :: myHeader"></div>
+<!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+
+    <div class="container">
+        <div class="row">
+<!--            <div class="col-lg-12 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">-->
+<!--                <div data-aos="zoom-out">-->
+<!--                    <h2>Formulir Pendaftaran Calon Mitra Jasa Get Help</h2>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+<!-- End Hero -->
+
+<main id="main">
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <p>Formulir Pendaftaran Calon Mitra</p>
+            </div>
+
+            <div th:if="${param.success}">
+                <div class="col-md-10 mb-3 alert alert-info">Anda berhasil mendaftarkan diri sebagai mitra Get Clean</div>
+            </div>
+
+            <div th:if="${param.failed}">
+                <div class="col-md-10 mb-3 alert alert-danger">You've already registered</div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-12 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
+
+                    <form class="needs-validation" th:action="@{/register}" method="post"
+                          th:object="${registrant}" enctype="multipart/form-data" novalidate>
+                        <div class="form-row">
+                            <div class="col-md-10 mb-3">
+                                <select class="custom-select" id="validationService" th:field="*{service}" required>
+                                    <option value="" selected>Pilih Jenis Layanan</option>
+                                    <option value="Get Clean">Get Clean</option>
+                                    <option value="Get Massage">Get Massage</option>
+                                    <option value="Get Beauty">Get Beauty</option>
+                                </select>
+                                <div class="invalid-feedback">Kamu belum memilih jenis layanan</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-10 mb-3">
+                                <div class="form-outline">
+                                    <input type="text" class="form-control" th:field="*{fullName}"
+                                           id="validationFullName" required>
+                                    <label for="validationFullName" class="form-label">Nama Lengkap Sesuai KTP</label>
+                                    <div class="invalid-feedback">
+                                        Nama Lengkap tidak boleh kosong
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-10 mb-3">
+                                <div class="form-outline">
+                                    <input type="text" pattern="\d*" class="form-control" th:field="*{nikKtp}"
+                                           id="validationNikKtp" maxlength="16" required>
+                                    <label for="validationNikKtp" class="form-label">NIK Ktp</label>
+                                    <div class="invalid-feedback">
+                                        NIK Ktp tidak boleh kosong
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-10 mb-3">
+                                <select class="custom-select" id="validationGender" th:field="*{gender}" required>
+                                    <option value="" selected>Pilih Jenis Kelamin</option>
+                                    <option value="Pria">Pria</option>
+                                    <option value="Wanita">Wanita</option>
+                                </select>
+                                <div class="invalid-feedback">Kamu belum memilih jenis kelamin</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-5 mb-3">
+                                <div class="input-group form-outline">
+                                    <span class="input-group-text" id="inputGroupPrepend">+62</span>
+                                    <input type="number" class="form-control" th:field="*{phoneNumber}"
+                                           id="validationPhoneNumber" aria-describedby="inputGroupPrepend" required>
+                                    <label for="validationPhoneNumber" class="form-label">No Handphone</label>
+                                    <div class="invalid-feedback">
+                                        No Handphone tidak boleh kosong
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <div class="form-outline">
+                                    <input type="email" class="form-control" th:field="*{email}"
+                                           id="validationEmail" required>
+                                    <label for="validationEmail" class="form-label">Email</label>
+                                    <div class="invalid-feedback">
+                                        Email tidak boleh kosong
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-10 mb-3">
+                                <div class="form-outline">
+                                    <textarea class="form-control" id="validationAddress"
+                                              th:field="*{address}" required></textarea>
+                                    <label for="validationAddress" class="form-label">Alamat Domisili</label>
+                                    <div class="invalid-feedback">
+                                        Alamat Domisili tidak boleh kosong
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-5 mb-3">
+                                <select class="custom-select" id="validationProv" th:field="*{provinsi}"
+                                        onchange="showSelectKab(this)"
+                                        required>
+                                    <option value="">Pilih Provinsi</option>
+                                </select>
+                                <div class="invalid-feedback">Kamu belum memilih provinsi</div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select class="custom-select" id="validationKab" th:field="*{kabupaten}"
+                                        onchange="showSelectKec(this)" disabled
+                                        required>
+                                    <option value="">Pilih Kabupaten</option>
+                                </select>
+                                <div class="invalid-feedback">Kamu belum memilih kabupaten</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-5 mb-3">
+                                <select class="custom-select" id="validationKec" th:field="*{kecamatan}"
+                                        onchange="showSelectKel(this)" disabled
+                                        required>
+                                    <option value="">Pilih Kecamatan</option>
+                                </select>
+                                <div class="invalid-feedback">Kamu belum memilih kecamatan</div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <select class="custom-select" id="validationKel" th:field="*{kelurahan}"
+                                        disabled required>
+                                    <option value="">Pilih Kelurahan</option>
+                                </select>
+                                <div class="invalid-feedback">Kamu belum memilih kelurahan</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-5 mb-3">
+                                <div class="form-outline">
+                                    <input type="text" class="form-control" th:field="*{workingExperience}"
+                                           id="validationWorkingExp" required>
+                                    <label for="validationWorkingExp" class="form-label">Pengalaman Pekerjaan</label>
+                                    <div class="invalid-feedback">
+                                        Pengalaman Pekerjaan tidak boleh kosong
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <div class="form-outline">
+                                    <input type="text" class="form-control" th:field="*{currentJob}"
+                                           id="validationCurrentJob" required>
+                                    <label for="validationCurrentJob" class="form-label">Pekerjaan Saat ini</label>
+                                    <div class="invalid-feedback">
+                                        Pekerjaan Saat ini tidak boleh kosong
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-5 mb-3">
+                                <div class="form-outline">
+                                    <input type="text" class="form-control" th:field="*{emergencyName}"
+                                           id="validationEName" required>
+                                    <label for="validationEName" class="form-label">Nama Kontak Darurat</label>
+                                    <div class="invalid-feedback">
+                                        Nama Kontak Darurat tidak boleh kosong
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <div class="input-group form-outline">
+                                    <span class="input-group-text" id="inputGroupPrepended">+62</span>
+                                    <input type="number" class="form-control" th:field="*{emergencyPhoneNumber}"
+                                           id="validationEPhoneNumber" aria-describedby="inputGroupPrepended" required>
+                                    <label for="validationEPhoneNumber" class="form-label">No Handphone Kontak Darurat</label>
+                                    <div class="invalid-feedback">
+                                        No Handphone Kontak Darurat tidak boleh kosong
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-10 mb-3">
+                                <select class="custom-select" th:field="*{emergencyRelationship}"
+                                        id="validationERelationship" required>
+                                    <option value="">Pilih Hubungan Kontak Darurat</option>
+                                    <option value="Ibu">Ibu</option>
+                                    <option value="Bapak">Bapak</option>
+                                    <option value="Suami">Suami</option>
+                                    <option value="Istri">Istri</option>
+                                    <option value="Anak">Anak</option>
+                                    <option value="Saudara">Saudara</option>
+                                    <option value="Paman">Paman</option>
+                                    <option value="Bibi">Bibi</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                                <div class="invalid-feedback">Kamu belum memilih Hubungan Kontak Darurat</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-md-10 mb-3">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="photoKtp" accept="image/png, image/jpeg"
+                                           id="validatePhotoKtp" required>
+                                    <label class="custom-file-label" for="validatePhotoKtp">Pilih file foto KTP</label>
+                                    <div class="invalid-feedback">Kamu belum mengupload file foto KTP</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <p class="font-weight-bold">Contoh :</p>
+                            <div class="text-center">
+                                <img src="assets/img/ktp/ktp.png"
+                                     class="rounded img-fluid" alt="Foto Ktp">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-md-10 mb-3">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="selfieKtp" accept="image/png, image/jpeg"
+                                           id="validateSelfieKtp" required>
+                                    <label class="custom-file-label" for="validateSelfieKtp">Pilih file foto selfie dengan KTP</label>
+                                    <div class="invalid-feedback">Kamu belum mengupload file foto selfie dengan KTP</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <p class="font-weight-bold">Contoh :</p>
+                            <div class="text-center">
+                                <img src="assets/img/ktp/selfie_ktp.png"
+                                     class="rounded img-fluid" alt="Selfie Ktp">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                <label class="form-check-label" for="invalidCheck">
+                                    Setuju dengan syarat dan ketentuan
+                                </label>
+                                <div class="invalid-feedback">
+                                    Anda harus klik setuju sebelum mengirimkan.
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Daftar</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+</main>
+<!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<div th:replace="footer :: myFooter"></div>
+<!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+<div id="preloader"></div>
+
+<div th:replace="modal_form :: myModalForm"></div>
+<div th:replace="modal_error :: myModalError"></div>
+
+<div th:replace="foot :: myFoot"></div>
+
+<!-- MDB -->
+<script type="text/javascript" src="assets/js/mdb.min.js"></script>
+
+<script type="text/javascript" src="assets/js/address.js"></script>
+
+</body>
+
+</html>
