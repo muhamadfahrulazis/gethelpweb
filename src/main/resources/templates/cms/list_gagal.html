@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="cms/header :: myHeader"></div>
+
+    <title>Get Help - Calon Mitra</title>
+</head>
+
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <div th:replace="cms/sidebar :: mySidebar"></div>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <div th:replace="cms/topbar :: myTopbar"></div>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Calon Mitra Gagal</h1>
+                <!--                <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>-->
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <!--                    <div class="card-header py-3">-->
+                    <!--                        <h6 class="m-0 font-weight-bold text-primary">Verification Service Provider</h6>-->
+                    <!--                    </div>-->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Nama Lengkap</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>No Handphone</th>
+                                    <th>Layanan</th>
+                                    <th>Aksi</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>Nama Lengkap</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>No Handphone</th>
+                                    <th>Layanan</th>
+                                    <th>Aksi</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <tr th:each="gagal : ${listGagal}">
+                                    <td th:text="${gagal.calonMitra.namaCalonMitra}"></td>
+                                    <td th:text="${gagal.calonMitra.jenisKelaminCalonMitra}"></td>
+                                    <td th:text="${gagal.calonMitra.noHpCalonMitra}"></td>
+                                    <td th:text="${gagal.calonMitra.layananCalonMitra}"></td>
+                                    <td>
+                                        <button class="btn btn-datatable btn-icon btn-transparent-dark vBtn" th:href="@{/showMitraGagalById/(id=${gagal.calonMitra.id_calonmitra})}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <div th:replace="cms/footer :: myFooter"></div>
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<div th:replace="cms/modal/gagal_modal :: myGagalModal"></div>
+
+<div th:replace="cms/foot :: myFoot"></div>
+
+<!-- Page level plugins -->
+<script th:src="@{/assets-cms/vendor/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/assets-cms/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+
+<!-- Page level custom scripts -->
+<script th:src="@{/assets-cms/js/demo/datatables-demo.js}"></script>
+<script th:src="@{/assets-cms/js/gagal.js}"></script>
+
+
+</body>
+
+</html>

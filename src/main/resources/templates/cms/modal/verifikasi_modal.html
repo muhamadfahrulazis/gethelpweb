@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Edit Modal-->
+<div class="verifikasi" th:fragment="myVerifikasiModal">
+    <div class="modal fade" id="verifikasiModal" tabindex="-1" role="dialog" aria-labelledby="verifikasiModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Verifikasi Calon Mitra</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="needs-validation" th:action="@{/verifikasiCalonMitra}" method="post"
+                      th:object="${calonmitra}" novalidate>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" id="id" name="id" value="" th:field="*{id_calonmitra}" >
+
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="FullName" class="form-label">Nama Lengkap:</label>
+                                <input type="text" class="form-control" id="FullName"
+                                       th:field="*{namaCalonMitra}" disabled>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="NikKtp" class="form-label">NIK Ktp:</label>
+                                <input type="text" pattern="\d*" class="form-control"
+                                       id="NikKtp" th:field="*{nikKtpCalonMitra}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="PhoneNumber" class="form-label">No Handphone:</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">+62</span>
+                                    <input type="number" class="form-control" id="PhoneNumber" th:field="*{noHpCalonMitra}"
+                                           aria-describedby="inputGroupPrepend" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="Email" class="form-label">Email:</label>
+                                <input type="email" class="form-control" th:field="*{emailCalonMitra}"
+                                       id="Email" disabled>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="EName" class="form-label">Nama Kontak Darurat</label>
+                                <input type="text" class="form-control" th:field="*{namaKontakDaruratCalonMitra}"
+                                       id="EName" disabled>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="EPhoneNumber" class="form-label">No Handphone Kontak Darurat</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepended">+62</span>
+                                    <input type="number" class="form-control" id="EPhoneNumber"
+                                           th:field="*{noHpKontakDaruratCalonMitra}"
+                                           aria-describedby="inputGroupPrepended" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="EPhoneNumber" class="form-label">Hubungan Kontak Darurat</label>
+                                <select class="custom-select" id="ERelationship"
+                                        th:field="*{hubKontakDaruratCalonMitra}" disabled>
+                                    <option value="">Pilih Hubungan Kontak Darurat</option>
+                                    <option value="Ibu">Ibu</option>
+                                    <option value="Bapak">Bapak</option>
+                                    <option value="Suami">Suami</option>
+                                    <option value="Istri">Istri</option>
+                                    <option value="Anak">Anak</option>
+                                    <option value="Saudara">Saudara</option>
+                                    <option value="Paman">Paman</option>
+                                    <option value="Bibi">Bibi</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <p class="font-weight-bold">Foto Ktp :</p>
+                                <div class="text-center">
+                                    <img id="imageKtpEdit" class="rounded img-fluid" alt="Foto Ktp"
+                                         style="width:500px;height:385px;object-fit:contain">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <p class="font-weight-bold">Foto Selfie Ktp :</p>
+                                <div class="text-center">
+                                    <img id="imageSelfieKtpEdit" class="rounded img-fluid" alt="Foto Selfie Ktp"
+                                         style="width:500px;height:385px;object-fit:contain">
+                                </div>
+                            </div>
+                        </div>
+                        <div th:object="${prosesCalonmitra}">
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="statusVerifikasi" class="form-label">Status Verifikasi</label>
+                                    <select class="custom-select" id="statusVerifikasi"
+                                            onchange="showDiv(this)" th:field="*{kode_proses}" required>
+                                        <option value="">Pilih Status Verifikasi</option>
+                                        <option value="11">Lulus</option>
+                                        <option value="21">Gagal</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Kamu belum memilih status verifikasi
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="failed_div" class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="reasonFailed" class="form-label" >Alasan Gagal:</label>
+                                    <textarea class="form-control" id="reasonFailed" th:field="*{alasanGagal}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary" type="submit" >Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

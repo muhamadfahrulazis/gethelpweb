@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Info Modal-->
+<div class="addKeahlianForm" th:fragment="myAddKeahlianModal">
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Tambah Keahlian</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="needs-validation" th:action="@{/cms/add_update_keahlian}" method="post"
+                      th:object="${keahlian}" novalidate>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" id="addIdKeahlian" th:field="*{id_keahlian}" hidden>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="addKodeKeahlian" class="form-label">Kode Keahlian:</label>
+                                <input type="text" class="form-control" id="addKodeKeahlian" th:field="*{kodeKeahlian}" required>
+                                <div class="invalid-feedback">
+                                    Kode Keahlian tidak boleh kosong
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="addNamaKeahlian" class="form-label">Nama Keahlian:</label>
+                                <input type="text" class="form-control" id="addNamaKeahlian" th:field="*{namaKeahlian}" required>
+                                <div class="invalid-feedback">
+                                    Nama Keahlian tidak boleh kosong
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="addDeskripsiKeahlian" class="form-label">Deskripsi Keahlian:</label>
+                                <textarea class="form-control" id="addDeskripsiKeahlian" th:field="*{deskripsiKeahlian}" required></textarea>
+                                <div class="invalid-feedback">
+                                    Deskripsi Keahlian tidak boleh kosong
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary" type="submit" >Tambahkan Keahlian</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

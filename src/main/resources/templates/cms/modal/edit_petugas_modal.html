@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Info Modal-->
+<div class="editPetugasForm" th:fragment="myEditPetugasModal">
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Ubah Details Petugas</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="needs-validation" th:action="@{/updatePetugas}" method="post"
+                      th:object="${petugas}" onsubmit="myFunction()" novalidate>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editNip" class="form-label">NIP:</label>
+                                <input type="text" class="form-control" id="editNip" th:field="*{nip}" required disabled>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editNama" class="form-label">Nama Lengkap:</label>
+                                <input type="text" class="form-control" id="editNama" th:field="*{nama}" required>
+                                <div class="invalid-feedback">
+                                    Nama Lengkap tidak boleh kosong
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="editJenisKelamin" class="form-label">Jenis Kelamin:</label>
+                                <select class="custom-select" id="editJenisKelamin" th:field="*{jenisKelamin}" required>
+                                    <option value="" >Pilih Jenis Kelamin</option>
+                                    <option value="Pria">Pria</option>
+                                    <option value="Wanita">Wanita</option>
+                                </select>
+                                <div class="invalid-feedback">Kamu belum memilih jenis kelamin</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editNoHp" class="form-label">No Handphone:</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">+62</span>
+                                    <input type="number" class="form-control" id="editNoHp" th:field="*{noHp}"
+                                           aria-describedby="inputGroupPrepend" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editEmail" class="form-label">Email:</label>
+                                <input type="email" class="form-control" th:field="*{email}"
+                                       id="editEmail" required>
+                                <div class="invalid-feedback">
+                                    Email tidak boleh kosong
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editJabatan" class="form-label">Jabatan:</label>
+                                <select class="custom-select" id="editJabatan" th:field="*{jabatan}" required>
+                                    <option value="" >Pilih Jabatan</option>
+                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Trainer">Trainer</option>
+                                    <option value="Verifier">Verifier</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Jabatan tidak boleh kosong
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editStatus" class="form-label">Status Petugas:</label>
+                                <select class="custom-select" id="editStatus" th:field="*{statusPetugas}" required>
+                                    <option value="" selected>Pilih Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactiver">Inactive</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Status tidak boleh kosong
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary" type="submit" >Ubah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

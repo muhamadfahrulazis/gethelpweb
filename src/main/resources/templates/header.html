@@ -4,20 +4,23 @@
     <header th:fragment="myHeader" id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="container d-flex align-items-center">
 
-            <div class="logo mr-auto">
-                <h1 class="text-light"><a th:href="@{/}"><span>Get Help</span></a></h1>
+            <div class="logo mr-auto d-none d-lg-block">
                 <!-- Uncomment below if you prefer to use an image logo -->
-<!--                <a href="#"><img th:src="@{/assets/img/logo.png}" alt="" class="img-fluid"></a>-->
+                <a th:href="@{/}"><img th:src="@{/assets/img/logo.png}" alt="" class="img-fluid"></a>
+<!--                <h1 class="text-light"><a th:href="@{/}"><span>Get Help</span></a></h1>-->
             </div>
 
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <li><a href="#">Tentang Kami</a></li>
-                    <li><a href="#">Layanan Kami</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li class="drop-down"><a href="">Layanan Kami</a>
+                        <ul>
+                            <li><a th:href="@{/getclean}">GetClean</a></li>
+                            <li><a th:href="@{/getmassage}">GetMassage</a></li>
+                            <li><a th:href="@{/getbeauty}">GetBeauty</a></li>
+                        </ul>
+                    <li><a th:href="@{/faq}">FAQ</a></li>
                     <li><a th:href="@{/registrationForm}">Bergabung</a></li>
-
                 </ul>
             </nav>
             <!-- .nav-menu -->

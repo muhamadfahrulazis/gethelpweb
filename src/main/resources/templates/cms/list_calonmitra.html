@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="cms/header :: myHeader"></div>
+
+    <title>Get Help - Calon Mitra</title>
+</head>
+
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <div th:replace="cms/sidebar :: mySidebar"></div>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <div th:replace="cms/topbar :: myTopbar"></div>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Calon Mitra</h1>
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <!-- success message -->
+                    <div th:if="${param.success}">
+                        <div class="alert alert-info">Data calon mitra berhasil diubah</div>
+                    </div>
+
+                    <div th:if="${param.failed}">
+                        <div class="alert alert-danger">Data calon mitra gagal diubah</div>
+                    </div>
+
+                    <!-- success message -->
+                    <div th:if="${param.successDelete}">
+                        <div class="alert alert-danger">Data calon mitra berhasil dihapus</div>
+                    </div>
+
+                    <div th:if="${param.failedDelete}">
+                        <div class="alert alert-danger">Data calon mitra gagal dihapus</div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Nama Lengkap</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>No Handphone</th>
+                                    <th>Layanan</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>Nama Lengkap</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>No Handphone</th>
+                                    <th>Layanan</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <tr th:each="calonMitra : ${listCalonMitra}">
+                                    <td th:text="${calonMitra.namaCalonMitra}"></td>
+                                    <td th:text="${calonMitra.jenisKelaminCalonMitra}"></td>
+                                    <td th:text="${calonMitra.noHpCalonMitra}"></td>
+                                    <td th:text="${calonMitra.layananCalonMitra}"></td>
+                                    <td>
+                                        <div th:switch="${calonMitra.isNewRegistrant}">
+                                            <div th:case="${'1'}">
+                                                <div class="badge badge-info badge-pill">
+                                                    <span >Calon Mitra Baru</span>
+                                                </div>
+                                            </div>
+                                            <div th:case="${'0'}">
+                                                <div class="badge badge-warning badge-pill">
+                                                    <span >Dalam proses</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2 eBtn" th:href="@{/showCalonMitraById/(id=${calonMitra.id_calonmitra})}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="btn btn-datatable btn-icon btn-transparent-dark vBtn" th:href="@{/showCalonMitraById/(id=${calonMitra.id_calonmitra})}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                            </svg>
+                                        </button>
+                                        <a class="btn btn-datatable btn-icon btn-transparent-dark rBtn" th:href="${'/deleteCalonMitraById?id_calonmitra='+calonMitra.id_calonmitra}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <div th:replace="cms/footer :: myFooter"></div>
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<div th:replace="cms/modal/info_modal :: myInfoModal"></div>
+<div th:replace="cms/modal/edit_modal :: myEditModal"></div>
+<div th:replace="cms/modal/remove_registrant_modal :: myRemoveRegistrantModal"></div>
+<div th:replace="cms/foot :: myFoot"></div>
+
+<!-- Page level plugins -->
+<script th:src="@{/assets-cms/vendor/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/assets-cms/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+
+<!-- Page level custom scripts -->
+<script th:src="@{/assets-cms/js/demo/datatables-demo.js}"></script>
+
+<script th:src="@{/assets-cms/js/calonmitra.js}"></script>
+<script th:src="@{/assets-cms/js/validation.js}"></script>
+
+</body>
+
+</html>

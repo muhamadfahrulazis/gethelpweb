@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Edit Modal-->
+<div class="mitraAktif" th:fragment="myMitraAktifModal">
+    <div class="modal fade" id="mitraAktifModal" tabindex="-1" role="dialog" aria-labelledby="mitraAktifModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Info Details Mitra Aktif</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="Service" class="form-label">Jenis Layanan:</label>
+                            <select class="custom-select" id="Service" disabled>
+                                <option value="" selected>Pilih Jenis Layanan</option>
+                                <option value="Get Clean">Get Clean</option>
+                                <option value="Get Massage">Get Massage</option>
+                                <option value="Get Beauty">Get Beauty</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="FullName" class="form-label">Nama Lengkap:</label>
+                            <input type="text" class="form-control" id="FullName" disabled>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="NikKtp" class="form-label">NIK Ktp:</label>
+                            <input type="text" pattern="\d*" class="form-control"
+                                   id="NikKtp" disabled>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="Gender" class="form-label">Jenis Kelamin:</label>
+                            <select class="custom-select" id="Gender" disabled>
+                                <option value="" selected>Pilih Jenis Kelamin</option>
+                                <option value="Pria">Pria</option>
+                                <option value="Wanita">Wanita</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="PhoneNumber" class="form-label">No Handphone:</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="inputGroupPrepend">+62</span>
+                                <input type="number" class="form-control" id="PhoneNumber"
+                                       aria-describedby="inputGroupPrepend" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="Email" class="form-label">Email:</label>
+                            <input type="email" class="form-control"
+                                   id="Email" disabled>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="Address" class="form-label">Alamat Domisili:</label>
+                            <textarea class="form-control" id="Address" disabled></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="Address" class="form-label">Provinsi:</label>
+                            <input type="text" class="form-control" id="Prov" disabled>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="Address" class="form-label">Kabupaten:</label>
+                            <input type="text" class="form-control" id="Kab" disabled>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="Address" class="form-label">Kecamatan:</label>
+                            <input type="text" class="form-control" id="Kec" disabled>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="Address" class="form-label">Kelurahan:</label>
+                            <input type="text" class="form-control" id="Kel" disabled>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="WorkingExp" class="form-label">Pengalaman Pekerjaan</label>
+                            <input type="text" class="form-control" value="Test"
+                                   id="WorkingExp" disabled>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="CurrentJob" class="form-label">Pekerjaan Saat ini</label>
+                            <input type="text" class="form-control" value="Test"
+                                   id="CurrentJob" disabled>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="EName" class="form-label">Nama Kontak Darurat</label>
+                            <input type="text" class="form-control" id="EName" disabled>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="EPhoneNumber" class="form-label">No Handphone Kontak Darurat</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="inputGroupPrepended">+62</span>
+                                <input type="number" class="form-control" id="EPhoneNumber"
+                                       aria-describedby="inputGroupPrepended" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="EPhoneNumber" class="form-label">Hubungan Kontak Darurat</label>
+                            <select class="custom-select" id="ERelationship" disabled>
+                                <option value="">Pilih Hubungan Kontak Darurat</option>
+                                <option value="Ibu">Ibu</option>
+                                <option value="Bapak">Bapak</option>
+                                <option value="Suami">Suami</option>
+                                <option value="Istri">Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Saudara">Saudara</option>
+                                <option value="Paman">Paman</option>
+                                <option value="Bibi">Bibi</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row" th:object="${keahlian}">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Keahlian Calon Mitra:</label>
+                            <select class="custom-select" disabled>
+                                <option th:each="keahlian : ${listKeahlian}" th:value="${keahlian.id_keahlian}" th:text="${keahlian.namaKeahlian}">
+
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <p class="font-weight-bold">Foto Ktp :</p>
+                            <div class="text-center">
+                                <img id="imageKtp" class="rounded img-fluid" alt="Foto Ktp"
+                                     style="width:500px;height:385px;object-fit:contain">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <p class="font-weight-bold">Foto Selfie Ktp :</p>
+                            <div class="text-center">
+                                <img id="imageSelfieKtp" class="rounded img-fluid" alt="Foto Selfie Ktp"
+                                     style="width:500px;height:385px;object-fit:contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

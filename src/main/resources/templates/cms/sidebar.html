@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <body>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" th:fragment="mySidebar" id="accordionSidebar">
@@ -7,7 +8,8 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/cms}">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+<!--            <i class="fas fa-laugh-wink"></i>-->
+            <img th:src="@{/assets/img/logo.png}" alt="" class="img-fluid" width="36" height="36">
         </div>
         <div class="sidebar-brand-text mx-3">Get Help</div>
     </a>
@@ -35,9 +37,10 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <!--                    <h6 class="collapse-header">Custom Components:</h6>-->
-                <a class="collapse-item" th:href="@{/cms/list_registrant}">List Calon Mitra</a>
-                <a class="collapse-item" href="#">Petugas</a>
-                <a class="collapse-item" href="#">Peralatan</a>
+                <a class="collapse-item" th:href="@{/cms/list_calonmitra}">Calon Mitra</a>
+                <a class="collapse-item" th:href="@{/cms/list_petugas}">Petugas</a>
+<!--                <a class="collapse-item" th:href="@{/cms/list_peralatan}">Peralatan</a>-->
+                <a class="collapse-item" th:href="@{/cms/list_keahlian}">Keahlian</a>
             </div>
         </div>
     </li>
@@ -51,10 +54,10 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Calon Mitra Baru</a>
-                <a class="collapse-item" href="#">Calon Mitra Training</a>
-                <a class="collapse-item" href="#">Calon Mitra Onboarding</a>
-                <a class="collapse-item" href="#">Calon Mitra Gagal</a>
+                <a class="collapse-item" th:href="@{/cms/list_verifikasi}">Calon Mitra Baru</a>
+                <a class="collapse-item" th:href="@{/cms/list_training}">Calon Mitra Training</a>
+                <a class="collapse-item" th:href="@{/cms/list_onboarding}">Calon Mitra Onboarding</a>
+                <a class="collapse-item" th:href="@{/cms/list_gagal}">Calon Mitra Gagal</a>
             </div>
         </div>
     </li>
@@ -63,8 +66,8 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-address-card"></i>
+        <a class="nav-link" th:href="@{/cms/list_mitra_aktif}">
+            <i class="fas fa-domisiliCalonMitra-card"></i>
             <span>Mitra Aktif</span></a>
     </li>
 

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Info Modal-->
+<div class="addPetugasForm" th:fragment="myAddPetugasModal">
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Tambahkan Petugas</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="needs-validation" th:action="@{/cms/registration}" method="post"
+                      th:object="${petugas}" novalidate>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" id="addIdPeralatan" th:field="*{nip}" hidden>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="addNama" class="form-label">Nama Lengkap:</label>
+                                <input type="text" class="form-control" id="addNama" th:field="*{nama}" required>
+                                <div class="invalid-feedback">
+                                    Nama Lengkap tidak boleh kosong
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="addJenisKelamin" class="form-label">Jenis Kelamin:</label>
+                                <select class="custom-select" id="addJenisKelamin" th:field="*{jenisKelamin}" required>
+                                    <option value="" selected>Pilih Jenis Kelamin</option>
+                                    <option value="Pria">Pria</option>
+                                    <option value="Wanita">Wanita</option>
+                                </select>
+                                <div class="invalid-feedback">Kamu belum memilih jenis kelamin</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="addNoHp" class="form-label">No Handphone:</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">+62</span>
+                                    <input type="number" class="form-control" id="addNoHp" th:field="*{noHp}"
+                                           aria-describedby="inputGroupPrepend" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="addEmail" class="form-label">Email:</label>
+                                <input type="email" class="form-control" th:field="*{email}"
+                                       id="addEmail" required>
+                                <div class="invalid-feedback">
+                                    Email tidak boleh kosong
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="addJabatan" class="form-label">Jabatan:</label>
+                                <select class="custom-select" id="addJabatan" th:field="*{jabatan}" required>
+                                    <option value="" selected>Pilih Jabatan</option>
+                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="Verifier">Verifier</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Trainer">Trainer</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Jabatan tidak boleh kosong
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="addStatus" class="form-label">Status Petugas:</label>
+                                <select class="custom-select" id="addStatus" th:field="*{statusPetugas}" required>
+                                    <option value="" selected>Pilih Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactiver">Inactive</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Status tidak boleh kosong
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="addPassword" class="form-label">Password:</label>
+                                <input type="password" class="form-control" id="addPassword"
+                                       th:field="*{password}" required>
+                                <div class="invalid-feedback">
+                                    Password tidak boleh kosong
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary" type="submit" >Tambah Petugas</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

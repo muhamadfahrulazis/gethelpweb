@@ -555,8 +555,8 @@ $utilities: map-merge(
         monospace: var(--bs-font-monospace),
       ),
     ),
-    'user-select': (
-      property: user-select,
+    'petugas-select': (
+      property: petugas-select,
       values: all auto none,
     ),
     'pointer-events': (
